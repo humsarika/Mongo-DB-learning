@@ -78,13 +78,18 @@ async function updateCourse(id){
     console.log("course details updated successfully")
 
 }
-updateCourse('64f44a1e85e1accdd5cc4940')
+// updateCourse('64f44a1e85e1accdd5cc4940')
+
+// Deleting a particular course from the course schema
+
+async function deleteCourse(id){
+    let deletedCourse = await Course.findByIdAndRemove(id)
+    console.log(deletedCourse)
+    console.log("course deleted succesfully")
+}
 
 
 
-
-
-
-
-
+// deleteCourse("64f44a7eced8767105f44877") 
+// if run this two times it shows null second time because the course and its details are deleted in the first run
 
