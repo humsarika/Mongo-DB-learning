@@ -17,7 +17,7 @@ const courseSchema = new mongoose.Schema({
 // Model
 const Course = mongoose.model('Course', courseSchema)
 
-
+// Creating/Adding a new course
 async function createCourse(){
     const course = new Course({
         name : 'OOPs',
@@ -30,8 +30,10 @@ async function createCourse(){
     console.log(result )
     console.log("Course added successfully")
 }
+// createCourse()
 
 
+// Displaying course or getting details of particular courses
 async function getCourses(){
 
     // comparison query operator---------------------------------------------------------------------
@@ -58,9 +60,25 @@ async function getCourses(){
     console.log(q13) 
 }
 
-// createCourse()
-getCourses()
 
+// getCourses()
+
+// Updating details of  course
+
+async function updateCourse(id){
+    let course = await Course.findById(id)
+    if(!course) {
+        return;
+    }
+    course.name = "Python"
+    course.creator = "Shriya"
+
+    const updatedCourse = await course.save()
+    console.log(updatedCourse)
+    console.log("course details updated successfully")
+
+}
+updateCourse('64f44a1e85e1accdd5cc4940')
 
 
 
